@@ -73,6 +73,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+if(file_exists('localconfig.php')){
+	include('localconfig.php');
+}else{
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -94,3 +97,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+}

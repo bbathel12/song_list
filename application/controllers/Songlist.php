@@ -10,6 +10,12 @@ class SongList extends CI_Controller {
 		$this->load->library('session');
 	}
 
+	public function index(){
+		$data['songs'] = $this->songlist_m->get_songs();	
+		$this->load->view('header');
+		$this->load->view('partials/songview.php',$data);
+		$this->load->view('footer');
+	}
 	public function view(){
 		$data['songs'] = $this->songlist_m->get_songs();	
 		$this->load->view('header');
