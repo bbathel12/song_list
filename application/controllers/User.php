@@ -21,9 +21,7 @@ class User extends CI_Controller {
 				if($id = $this->user->check_login($username,$password)){
 					$this->session->set_userdata('user_id',$id);
 					$this->session->set_flashdata('success',"Logged In");
-					$this->load->view('header');
-					$this->load->view('songlist/view');
-					$this->load->view('footer');
+					redirect('/songlist/view');
 				}
 			}
 			else{
@@ -36,8 +34,9 @@ class User extends CI_Controller {
 	}
 
 	public function create($username,$password){
-		$this->user->create($username,$password);
-
+		if(isset($_SESSION['user_id']) && $this->user->test($_SESSION['user_id'])){
+			$this->user->create($username,$password);
+		}else{redirect('/user/login');}
 	}
 
 }
