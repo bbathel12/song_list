@@ -2,9 +2,12 @@
 	$class="class='form-control'";
 ?>
 <div class="row">
-	<h1>Login</h1>
+	
 	<div class="col-xs-12 col-md-6 col-md-offset-3">
-		<?= form_open('user/login')?>
+		<div class="row">
+			<h1 class="col-xs-12">Login </h1>
+		</div>
+		<?= form_open('/user/login')?>
 			<div class="row">
 			<?= form_label('Username',"username");?>
 			<?= form_input('username',null,$class) ?>

@@ -8,19 +8,28 @@ class SongList extends CI_Controller {
 		$this->load->model('songlist_m');
 		$this->load->helper('form');
 		$this->load->library('session');
+		$this->load->helper('url');
+		
 	}
 
+
 	public function index(){
-		$data['songs'] = $this->songlist_m->get_songs();	
-		$this->load->view('header');
-		$this->load->view('partials/songview.php',$data);
-		$this->load->view('footer');
+		if(isset($_SESSION['user_id']) && $this->songlist_m->test($_SESSION['user_id'])){
+			$data['songs'] = $this->songlist_m->get_songs();	
+			$this->load->view('header');
+			$this->load->view('partials/songview.php',$data);
+			$this->load->view('footer');
+		}
 	}
 	public function view(){
-		$data['songs'] = $this->songlist_m->get_songs();	
-		$this->load->view('header');
-		$this->load->view('partials/songview.php',$data);
-		$this->load->view('footer');
+		if(isset($_SESSION['user_id']) && $this->songlist_m->test($_SESSION['user_id'])){
+			$data['songs'] = $this->songlist_m->get_songs();	
+			$this->load->view('header');
+			$this->load->view('partials/songview.php',$data);
+			$this->load->view('footer');
+		}else{
+			redirect('user/login');
+		}
 	}
 
 	public function add_song(){

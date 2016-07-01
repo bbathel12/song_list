@@ -23,7 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://amberandbrice.com/songlist/';
+if(!file_exists('localconfig.php')){
+	$config['base_url'] = 'http://amberandbrice.com/songlist/';
+}
+else{
+	$config['base_url'] = 'http://songlist.com/';
+}
 
 /*
 |--------------------------------------------------------------------------

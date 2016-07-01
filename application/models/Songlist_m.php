@@ -35,4 +35,15 @@ class SongList_m extends CI_Model{
 		}
 
 	}
+
+	function test($user_id=null){
+		echo $user_id;
+		return true;/*
+		$this->db->where('id',$user_id);
+		$query = $this->db->get('User');
+		if($this->db->affected_rows()>0){
+			return true;
+		}
+		else{return false;}*/
+	}
 }
