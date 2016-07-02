@@ -20,4 +20,4 @@
 <?php if($this->session->flashdata('error')){?>
 	<h1 class="bg-danger"><?= $this->session->flashdata('error') ?></h1>
 <?php }?>
-
+<span id='user_id' class='hidden' data-id="<?= $_SESSION['user_id']?>"></span> 

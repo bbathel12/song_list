@@ -74,6 +74,21 @@ class SongList_m extends CI_Model{
 		}
 
 	}
+	function get_votes($song_id){
+		$this->db->where('value','l')
+		->where('song_id',$song_id)
+		->get('likes');
+		$to_return['likes'] = $this->db->affected_rows();
+		$this->db->where('value','n')
+		->where('song_id',$song_id)
+		->get('likes');
+		$to_return['no_feelings'] = $this->db->affected_rows();
+		$this->db->where('value','d')
+		->where('song_id',$song_id)
+		->get('likes');
+		$to_return['dislikes'] = $this->db->affected_rows();
+		return $to_return;
+	}
 
 
 
