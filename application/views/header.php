@@ -5,11 +5,12 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet" href="<?= base_url() ?>css/font_awesome/css/font-awesome.min.css">
 </head>
 <body class="container-fluid">
-<?php $this->load->view('nav');?>
+<?php $this->load->view('nav'); echo getcwd();?>
 <br><br>
 <br><br>
 <br><br>

@@ -45,6 +45,15 @@ class SongList extends CI_Controller {
 			$this->load->view('footer');
 		}else{redirect('/user/login');}
 	}
+
+	public function vote($choice,$song_id,$user_id){
+		switch($choice){
+			case 1: $this->songlist_m->like($song_id,$user_id);break;
+			case 2: $this->songlist_m->no_feelings($song_id,$user_id);break;
+			case 3: $this->songlist_m->dislike($song_id,$user_id);break;
+			default: $this->session->set_flashdata('error','Invalid Vote');
+		}
+	}
 	
 	
 }

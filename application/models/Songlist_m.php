@@ -36,14 +36,46 @@ class SongList_m extends CI_Model{
 
 	}
 
-	function test($user_id=null){
-		echo $user_id;
-		return true;/*
-		$this->db->where('id',$user_id);
-		$query = $this->db->get('User');
+	function like($song_id,$user_id){
+		$this->db->where('song_id',$song_id)
+		->where('user_id',$user_id)
+		->get('likes');
 		if($this->db->affected_rows()>0){
-			return true;
+
+		}else{
+			$data = array('song_id'=>$song_id,'user_id'=>$user_id,'value'=>'l');
+			$this->db->insert('likes',$data);
 		}
-		else{return false;}*/
+
 	}
+
+	function no_feelings($song_id,$user_id){
+		$this->db->where('song_id',$song_id)
+		->where('user_id',$user_id)
+		->get('likes');
+		if($this->db->affected_rows()>0){
+
+		}else{
+			$data = array('song_id'=>$song_id,'user_id'=>$user_id,'value'=>'n');
+			$this->db->insert('likes',$data);
+		}
+
+	}
+
+	function dislike($song_id,$user_id){
+		$this->db->where('song_id',$song_id)
+		->where('user_id',$user_id)
+		->get('likes');
+		if($this->db->affected_rows()>0){
+
+		}else{
+			$data = array('song_id'=>$song_id,'user_id'=>$user_id,'value'=>'d');
+			$this->db->insert('likes',$data);
+		}
+
+	}
+
+
+
+
 }
