@@ -56,13 +56,20 @@ class SongList extends CI_Controller {
 
 	public function vote($choice,$song_id,$user_id){
 		header('Content-Type: application/json');
-		switch($choice){
+		//header("HTTP/1.1 200 OK");
+		/*switch($choice){
 			case 1: $this->songlist_m->like($song_id,$user_id);echo json_encode(true);break;
 			case 2: $this->songlist_m->no_feelings($song_id,$user_id);echo json_encode(true);break;
 			case 3: $this->songlist_m->dislike($song_id,$user_id);echo json_encode(true);break;
 			default: $this->session->set_flashdata('error','Invalid Vote');echo json_encode(false);break;
-		}
+		}*/
+		$this->songlist_m->like($song_id,$user_id,$choice);
+		echo $this->songlist_m->get_votes_json();
 	}
 	
+	
+	public function get_votes_json(){
+		$this->songlist_m->get_votes_json();
+	}
 	
 }
