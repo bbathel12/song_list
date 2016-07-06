@@ -45,7 +45,6 @@ class SongList_m extends CI_Model{
 		$result = $this->db->where('song_id',$song_id)
 		->where('user_id',$user_id)
 		->get('likes');
-		header("HTTP/1.1 200 OK");
 		if($this->db->affected_rows()>0){
 			foreach($result->result() as $row){
 				if($row->value == $choice_letter){
@@ -60,7 +59,7 @@ class SongList_m extends CI_Model{
 			}
 		}else{
 			$data = array('song_id'=>$song_id,'user_id'=>$user_id,'value'=>$choice_letter);
-			//return $this->db->insert('likes',$data);
+			$this->db->insert('likes',$data);
 		}
 		//return $this->get_votes_json();
 
